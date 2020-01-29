@@ -1,0 +1,11 @@
+N:\Work\Plants\Plants.Infrastructure\bin\Debug\netcoreapp3.1\Plants.Core.dll
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.csprojAssemblyReference.cache
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.AssemblyInfoInputs.cache
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.AssemblyInfo.cs
+N:\Work\Plants\Plants.Infrastructure\bin\Debug\netcoreapp3.1\Plants.Infrastructure.deps.json
+N:\Work\Plants\Plants.Infrastructure\bin\Debug\netcoreapp3.1\Plants.Infrastructure.dll
+N:\Work\Plants\Plants.Infrastructure\bin\Debug\netcoreapp3.1\Plants.Infrastructure.pdb
+N:\Work\Plants\Plants.Infrastructure\bin\Debug\netcoreapp3.1\Plants.Core.pdb
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.csproj.CopyComplete
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.dll
+N:\Work\Plants\Plants.Infrastructure\obj\Debug\netcoreapp3.1\Plants.Infrastructure.pdb
