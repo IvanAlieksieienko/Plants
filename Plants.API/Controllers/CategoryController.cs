@@ -22,40 +22,40 @@ namespace Plants.API.Controllers
         }
 
         [HttpGet("all")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var categorys = _categoryService.GetAll();
+            var categorys = await _categoryService.GetAll();
             return Ok(categorys);
         }
 
         [HttpGet("{ID:guid}")]
-        public IActionResult GetByID(Guid ID)
+        public async Task<IActionResult> GetByID(Guid ID)
         {
-            var category = _categoryService.GetByID(ID);
+            var category = await _categoryService.GetByID(ID);
             return Ok(category);
         }
 
         [Authorize]
         [HttpPost("add")]
-        public IActionResult Add([FromBody]Category category)
+        public async Task<IActionResult> Add([FromBody]Category category)
         {
-            var categoryReturned = _categoryService.Add(category);
+            var categoryReturned = await _categoryService.Add(category);
             return Ok(categoryReturned);
         }
 
         [Authorize]
         [HttpPut("update")]
-        public IActionResult Update([FromBody]Category category)
+        public async Task<IActionResult> Update([FromBody]Category category)
         {
-            var categoryReturned = _categoryService.Update(category);
+            var categoryReturned = await _categoryService.Update(category);
             return Ok(categoryReturned);
         }
 
         [Authorize]
         [HttpDelete("{ID:guid}")]
-        public IActionResult Delete(Guid ID)
+        public async Task<IActionResult> Delete(Guid ID)
         {
-            _categoryService.Delete(ID);
+            await _categoryService.Delete(ID);
             return Ok();
         }
     }

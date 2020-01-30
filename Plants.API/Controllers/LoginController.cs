@@ -24,22 +24,22 @@ namespace Plants.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public async Task<IActionResult> Login()
         {
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult Login(Admin admin)
+        public async Task<IActionResult> Login(Admin admin)
         {
             if (!ModelState.IsValid)
             {
                 return Ok(null);
             }
-            Admin _admin = _adminService.GetByLoginPassword(admin.Login, admin.Password);
+            Admin _admin = await _adminService.GetByLoginPassword(admin.Login, admin.Password);
             if (_admin != null)
             {
-                Authenticate(_admin.Login);
+                await Authenticate(_admin.Login);
                 return Ok(_admin);
             }
             ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -47,20 +47,20 @@ namespace Plants.API.Controllers
         }
 
         [HttpPut("cookiesAuthentication")]
-        private void Authenticate(string login)
+        private async Task Authenticate(string login)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, login)
             };
             var id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
         [HttpGet("logout")]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();
         }
     }

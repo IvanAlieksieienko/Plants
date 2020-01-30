@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.IRepositories
 {
     public interface IAdminRepository<U> where U :class
     {
-        U Add(U admin);
+        Task<U> Add(U admin);
 
-        ICollection<U> GetAll();
+        Task<ICollection<U>> GetAll();
 
-        U GetByID(Guid? ID);
+        Task<U> GetByID(Guid? ID);
 
-        U GetByLoginPassword(string login, string password);
+        Task<U> GetByLoginPassword(string login, string password);
 
-        U Update(U admin);
+        Task<U> Update(U admin);
 
-        void Delete(Guid? ID);
+        Task Delete(Guid? ID);
     }
 }

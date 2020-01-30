@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.IRepositories
 {
     public interface ICategoryRepository<U> where U : class
     {
-        U Add(U category);
+        Task<U> Add(U category);
 
-        ICollection<U> GetAll();
+        Task<ICollection<U>> GetAll();
 
-        U GetByID(Guid? ID);
+        Task<U> GetByID(Guid? ID);
 
-        U Update(U category);
+        Task<U> Update(U category);
 
-        void Delete(Guid? ID);
+        Task Delete(Guid? ID);
     }
 }

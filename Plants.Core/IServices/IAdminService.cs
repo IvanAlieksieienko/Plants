@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.IServices
 {
     public interface IAdminService
     {
-        Admin GetByLoginPassword(string login, string password);
-        Admin Add(Admin admin);
-        ICollection<Admin> GetAll();
-        Admin GetByID(Guid? ID);
-        Admin Update(Admin admin);
-        void Delete(Guid? ID);
+        Task<Admin> GetByLoginPassword(string login, string password);
+        Task<Admin> Add(Admin admin);
+        Task<ICollection<Admin>> GetAll();
+        Task<Admin> GetByID(Guid? ID);
+        Task<Admin> Update(Admin admin);
+        Task Delete(Guid? ID);
     }
 }

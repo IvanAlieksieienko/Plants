@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.IRepositories
 {
     public interface IProductRepository<U> where U : class
     {
-        U Add(U product);
+        Task<U> Add(U product);
 
-        ICollection<U> GetAll();
+        Task<ICollection<U>> GetAll();
 
-        U GetByID(Guid? ID);
+        Task<U> GetByID(Guid? ID);
 
-        ICollection<U> GetByCategoryID(Guid? ID);
+        Task<ICollection<U>> GetByCategoryID(Guid? ID);
 
-        U Update(U product);
+        Task<U> Update(U product);
 
-        void Delete(Guid? ID);
+        Task Delete(Guid? ID);
     }
 }

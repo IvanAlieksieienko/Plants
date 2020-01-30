@@ -4,6 +4,7 @@ using Plants.Core.IServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.Services
 {
@@ -16,34 +17,34 @@ namespace Plants.Core.Services
             _productRepository = productRepository;
         }
 
-        public Product Add(Product product)
+        public async Task<Product> Add(Product product)
         {
-            return _productRepository.Add(product);
+            return await _productRepository.Add(product);
         }
 
-        public ICollection<Product> GetAll()
+        public async Task<ICollection<Product>> GetAll()
         {
-            return _productRepository.GetAll();
+            return await _productRepository.GetAll();
         }
 
-        public Product GetByID(Guid? ID)
+        public async Task<Product> GetByID(Guid? ID)
         {
-            return _productRepository.GetByID(ID);
+            return await _productRepository.GetByID(ID);
         }
 
-        public ICollection<Product> GetByCategoryID(Guid? ID)
+        public async Task<ICollection<Product>> GetByCategoryID(Guid? ID)
         {
-            return _productRepository.GetByCategoryID(ID);
+            return await _productRepository.GetByCategoryID(ID);
         }
 
-        public Product Update(Product product)
+        public async Task<Product> Update(Product product)
         {
-            return _productRepository.Update(product);
+            return await _productRepository.Update(product);
         }
 
-        public void Delete(Guid? ID)
+        public async Task Delete(Guid? ID)
         {
-            _productRepository.Delete(ID);
+           await _productRepository.Delete(ID);
         }
     }
 }

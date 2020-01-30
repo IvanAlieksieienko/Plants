@@ -22,47 +22,47 @@ namespace Plants.API.Controllers
         }
 
         [HttpGet("all")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var products = _productService.GetAll();
+            var products = await _productService.GetAll();
             return Ok(products);
         }
 
         [HttpGet("{ID:guid}")]
-        public IActionResult GetByID(Guid ID)
+        public async Task<IActionResult> GetByID(Guid ID)
         {
-            var product = _productService.GetByID(ID);
+            var product = await _productService.GetByID(ID);
             return Ok(product);
         }
 
         [HttpGet("category/{ID:guid}")]
-        public IActionResult GetByCategoryID(Guid ID)
+        public async Task<IActionResult> GetByCategoryID(Guid ID)
         {
-            var products = _productService.GetByCategoryID(ID);
+            var products = await _productService.GetByCategoryID(ID);
             return Ok(products);
         }
 
         [Authorize]
         [HttpPost("add")]
-        public IActionResult Add([FromBody]Product product)
+        public async Task<IActionResult> Add([FromBody]Product product)
         {
-            var productReturned = _productService.Add(product);
+            var productReturned = await _productService.Add(product);
             return Ok(productReturned);
         }
 
         [Authorize]
         [HttpPut("update")]
-        public IActionResult Update([FromBody]Product product)
+        public async Task<IActionResult> Update([FromBody]Product product)
         {
-            var productReturned = _productService.Update(product);
+            var productReturned = await _productService.Update(product);
             return Ok(productReturned);
         }
 
         [Authorize]
         [HttpDelete("{ID:guid}")]
-        public IActionResult Delete(Guid ID)
+        public async Task<IActionResult> Delete(Guid ID)
         {
-            _productService.Delete(ID);
+            await _productService.Delete(ID);
             return Ok();
         }
     }

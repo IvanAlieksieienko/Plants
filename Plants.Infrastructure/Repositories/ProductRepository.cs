@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Infrastructure.Repositories
 {
@@ -19,7 +20,7 @@ namespace Plants.Infrastructure.Repositories
             _connectionString = connectionString;
         }
 
-        public Product Add(Product product)
+        public async Task<Product> Add(Product product)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -33,39 +34,39 @@ namespace Plants.Infrastructure.Repositories
                 newProduct.Price = product.Price;
                 var sqlQuery = "INSERT INTO Product (ID, CategoryID, IsAvailable, Name, Description, ImagePath, Price) " +
                     "VALUES (@ID, @CategoryID, @IsAvailable, @Name, @Description, @ImagePath, @Price)";
-                db.Execute(sqlQuery, newProduct);
-                return GetByID(newProduct.ID);
+                await db.ExecuteAsync(sqlQuery, newProduct);
+                return await GetByID(newProduct.ID);
             }
         }
 
-        public ICollection<Product> GetAll()
+        public async Task<ICollection<Product>> GetAll()
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                List<Product> products = db.Query<Product>("SELECT * FROM Product").ToList();
+                List<Product> products = (await db.QueryAsync<Product>("SELECT * FROM Product")).ToList();
                 return products;
             }
         }
 
-        public Product GetByID(Guid? ID)
+        public async Task<Product> GetByID(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                Product product = db.Query<Product>("SELECT * FROM Product WHERE ID = @ID", new { ID }).FirstOrDefault();
+                Product product = (await db.QueryAsync<Product>("SELECT * FROM Product WHERE ID = @ID", new { ID })).FirstOrDefault();
                 return product;
             }
         }
 
-        public ICollection<Product> GetByCategoryID(Guid? ID)
+        public async Task<ICollection<Product>> GetByCategoryID(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                List<Product> products = db.Query<Product>("SELECT * FROM Product WHERE CategoryID = @ID", new { ID }).ToList();
+                List<Product> products = (await db.QueryAsync<Product>("SELECT * FROM Product WHERE CategoryID = @ID", new { ID })).ToList();
                 return products;
             }
         }
 
-        public Product Update(Product product)
+        public async Task<Product> Update(Product product)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -86,17 +87,17 @@ namespace Plants.Infrastructure.Repositories
                                 "ImagePath = @ImagePath, " +
                                 "Price = @Price " +
                                 "WHERE ID = @ID";
-                db.Execute(sqlQuery, newProduct);
-                return GetByID(newProduct.ID);
+                await db.ExecuteAsync(sqlQuery, newProduct);
+                return await GetByID(newProduct.ID);
             }
         }
 
-        public void Delete(Guid? ID)
+        public async Task Delete(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 var sqlQuery = "DELETE FROM Product WHERE ID = @ID";
-                db.Execute(sqlQuery, new { ID });
+                await db.ExecuteAsync(sqlQuery, new { ID });
             }
 
         }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Infrastructure.Repositories
 {
@@ -19,7 +20,7 @@ namespace Plants.Infrastructure.Repositories
             _connectionString = connectionString;
         }
 
-        public Admin Add(Admin admin)
+        public async Task<Admin> Add(Admin admin)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -29,30 +30,30 @@ namespace Plants.Infrastructure.Repositories
                 newAdmin.Password = admin.Password;
                 var sqlQuery = "INSERT INTO Admin (ID, Login, Password) " +
                     "VALUES (@ID, @Login, @Password)";
-                db.Execute(sqlQuery, newAdmin);
-                return GetByID(newAdmin.ID);
+                await db.ExecuteAsync(sqlQuery, newAdmin);
+                return await GetByID(newAdmin.ID);
             }
         }
 
-        public ICollection<Admin> GetAll()
+        public async Task<ICollection<Admin>> GetAll()
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                List<Admin> categories = db.Query<Admin>("SELECT * FROM Admin").ToList();
+                List<Admin> categories = (await db.QueryAsync<Admin>("SELECT * FROM Admin")).ToList();
                 return categories;
             }
         }
 
-        public Admin GetByID(Guid? ID)
+        public async Task<Admin> GetByID(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                Admin admin = db.Query<Admin>("SELECT * FROM Admin WHERE ID = @ID", new { ID }).FirstOrDefault();
+                Admin admin = (await db.QueryAsync<Admin>("SELECT * FROM Admin WHERE ID = @ID", new { ID })).FirstOrDefault();
                 return admin;
             }
         }
 
-        public Admin Update(Admin admin)
+        public async Task<Admin> Update(Admin admin)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -65,25 +66,25 @@ namespace Plants.Infrastructure.Repositories
                                 "Login = @Login, " +
                                 "Password = @Password " +
                                 "WHERE ID = @ID";
-                db.Execute(sqlQuery, newAdmin);
-                return GetByID(newAdmin.ID);
+                await db.ExecuteAsync(sqlQuery, newAdmin);
+                return await GetByID(newAdmin.ID);
             }
         }
 
-        public void Delete(Guid? ID)
+        public async Task Delete(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 var sqlQuery = "DELETE FROM Admin WHERE ID = @ID";
-                db.Execute(sqlQuery, new { ID });
+                await db.ExecuteAsync(sqlQuery, new { ID });
             }
         }
 
-        public Admin GetByLoginPassword(string login, string password)
+        public async Task<Admin> GetByLoginPassword(string login, string password)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                Admin admin = db.Query<Admin>("SELECT * FROM Admin WHERE Login = @login and Password = @password", new { login, password }).FirstOrDefault();
+                Admin admin = (await db.QueryAsync<Admin>("SELECT * FROM Admin WHERE Login = @login and Password = @password", new { login, password })).FirstOrDefault();
                 return admin;
             }
         }

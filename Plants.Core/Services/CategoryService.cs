@@ -4,6 +4,7 @@ using Plants.Core.IServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.Services
 {
@@ -16,29 +17,29 @@ namespace Plants.Core.Services
             _categoryRepository = categoryRepository;
         }
 
-        public Category Add(Category category)
+        public async Task<Category> Add(Category category)
         {
-            return _categoryRepository.Add(category);
+            return await _categoryRepository.Add(category);
         }
 
-        public ICollection<Category> GetAll()
+        public async Task<ICollection<Category>> GetAll()
         {
-            return _categoryRepository.GetAll();
+            return await _categoryRepository.GetAll();
         }
 
-        public Category GetByID(Guid? ID)
+        public async Task<Category> GetByID(Guid? ID)
         {
-            return _categoryRepository.GetByID(ID);
+            return await _categoryRepository.GetByID(ID);
         }
 
-        public Category Update(Category category)
+        public async Task<Category> Update(Category category)
         {
-            return _categoryRepository.Update(category);
+            return await _categoryRepository.Update(category);
         }
 
-        public void Delete(Guid? ID)
+        public async Task Delete(Guid? ID)
         {
-            _categoryRepository.Delete(ID);
+            await _categoryRepository.Delete(ID);
         }
     }
 }

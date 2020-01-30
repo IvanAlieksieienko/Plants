@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.IServices
 {
     public interface ICategoryService
     {
-        Category Add(Category category);
-        ICollection<Category> GetAll();
-        Category GetByID(Guid? ID);
-        Category Update(Category category);
-        void Delete(Guid? ID);
+        Task<Category> Add(Category category);
+        Task<ICollection<Category>> GetAll();
+        Task<Category> GetByID(Guid? ID);
+        Task<Category> Update(Category category);
+        Task Delete(Guid? ID);
     }
 }

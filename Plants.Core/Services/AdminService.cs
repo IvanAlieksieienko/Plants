@@ -4,6 +4,7 @@ using Plants.Core.IServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Plants.Core.Services
 {
@@ -16,34 +17,34 @@ namespace Plants.Core.Services
             _adminRepository = adminRepository;
         }
 
-        public Admin GetByLoginPassword(string login, string password)
+        public async Task<Admin> GetByLoginPassword(string login, string password)
         {
-            return _adminRepository.GetByLoginPassword(login, password);
+            return await _adminRepository.GetByLoginPassword(login, password);
         }
 
-        public Admin Add(Admin admin)
+        public async Task<Admin> Add(Admin admin)
         {
-            return _adminRepository.Add(admin);
+            return await _adminRepository.Add(admin);
         }
 
-        public ICollection<Admin> GetAll()
+        public async Task<ICollection<Admin>> GetAll()
         {
-            return _adminRepository.GetAll();
+            return await _adminRepository.GetAll();
         }
 
-        public Admin GetByID(Guid? ID)
+        public async Task<Admin> GetByID(Guid? ID)
         {
-            return _adminRepository.GetByID(ID);
+            return await _adminRepository.GetByID(ID);
         }
 
-        public Admin Update(Admin admin)
+        public async Task<Admin> Update(Admin admin)
         {
-            return _adminRepository.Update(admin);
+            return await _adminRepository.Update(admin);
         }
 
-        public void Delete(Guid? ID)
+        public async Task Delete(Guid? ID)
         {
-            _adminRepository.Delete(ID);
+            await _adminRepository.Delete(ID);
         }
     }
 }
