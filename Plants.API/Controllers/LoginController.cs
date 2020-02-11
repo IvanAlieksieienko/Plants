@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Plants.Core.Entities;
@@ -62,6 +63,13 @@ namespace Plants.API.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("logined")]
+        public async Task<IActionResult> LoginedOrNot()
+        {
+            return Ok(true);
         }
     }
 }

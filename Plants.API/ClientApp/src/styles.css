@@ -1,16 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+
+.btn {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-code {
-  color: #e01a76;
+
+.btn:before,
+.btn:after {
+  content: '';
+  position: absolute;
+  transition: inherit;
+  z-index: -1;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn:hover {
+  color: white;
+  transition-delay: .3s;
+}
+
+.btn:hover:before {
+  transition-delay: 0s;
+}
+
+.btn:hover:after {
+  background: #55C34D;
+  transition-delay: .2s;
+}
+
+.from:before {
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 0;
+  border: 1px solid #55C34D;
+  border-left: 0;
+  border-right: 0;
+}
+
+.from:after {
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background: #55C34D;
+}
+
+.from:hover:before {
+  left: 0;
+  width: 100%;
+}
+
+.from:hover:after {
+  top: 0;
+  height: 100%;
+}
+
+.btn-in {
+  transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+  border: 0px;
+  background: white;
+}
+
+.btn-in:hover {
+  background: #55C34D;
+  color: white;
+  border: 1px solid white;
 }

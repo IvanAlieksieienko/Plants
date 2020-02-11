@@ -1,0 +1,8 @@
+<div class="side">
+
+    <ng-container *ngFor="let category of _categories">
+        <button class="btn from" (click)="checkCategory(category)">{{category.name}}</button>
+    </ng-container>
+    <a class="btn from" [routerLink]="category/create">Создать категорию</a>
+
+</div>

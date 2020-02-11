@@ -1,0 +1,87 @@
+head-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 15%;
+    z-index: 999;
+    background: white;
+}
+
+side-bar {
+    position: fixed;
+    width: 15%;
+    height: 85%;
+    top: 15%;
+    z-index: 999;
+    background: white;
+}
+
+.router-outlet {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 85%;
+    height: 85%;
+}
+
+@media screen and (max-width: 1400px) {
+    head-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 30%;
+        z-index: 999;
+        background: white;
+    }
+    side-bar {
+        position: fixed;
+        top: 30%;
+    }
+    .router-outlet {
+        position: absolute;
+        top: 30%;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    head-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 40%;
+        z-index: 999;
+        background: white;
+    }
+    side-bar {
+        position: fixed;
+        top: 40%;
+    }
+    .router-outlet {
+        position: absolute;
+        top: 40%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    head-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 40%;
+        z-index: 999;
+        background: white;
+    }
+    side-bar {
+        position: fixed;
+        width: 100%;
+        height: 15%;
+        top: 40%;
+    }
+    .router-outlet {
+        position: absolute;
+        top: 55%;
+        left: 0%;
+        width: 100%;
+        height: 70%;
+    }
+}

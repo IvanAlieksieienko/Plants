@@ -1,0 +1,12 @@
+<div class="head">
+    <div class="icon-title">
+        <a routerLink=""><fa-icon id="icon-tree" [icon]="mainIcon" size="3x" [styles]="{'color':'#55C34D'}"></fa-icon></a>
+        <a routerLink=""><span id="title">СЛАДКИЙ САД</span></a>
+    </div>
+    <div class="links">
+        <a class="btn from" routerLink="about">О НАС</a>
+        <a class="btn from" routerLink="contact">КОНТАКТЫ</a>
+        <a class="btn from" routerLink="login" *ngIf="_sharedService._isShowLoginButton">ВОЙТИ</a>
+        <button class="btn from" (click)="logout()" *ngIf="!_sharedService._isShowLoginButton">ВЫЙТИ</button>
+    </div>
+</div>

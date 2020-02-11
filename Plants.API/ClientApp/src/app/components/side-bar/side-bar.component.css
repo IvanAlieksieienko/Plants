@@ -1,0 +1,12 @@
+.side {
+    height: 100%;
+    border-right: 1px solid #55C34D;
+}
+
+.side a, button {
+    width: 100%;
+}
+
+.btn {
+    font-size: 1.8em;
+}

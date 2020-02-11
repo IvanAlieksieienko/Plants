@@ -1,0 +1,50 @@
+.head {
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid #55C34D;
+}
+
+span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+}
+
+.icon-title {
+    display: block;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.icon-title a {
+    color: black;
+}
+
+#icon-tree {
+    display: inline-block;
+    margin-left: 5%;
+    margin-top: 28px;
+}
+
+#title {
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.links {
+    float: right;
+    height: 100%;
+    width: 50%;
+}
+
+.links a, button {
+    width: 195px;
+    display: inline-block;
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+.btn {
+    font-size: 2em;
+}
