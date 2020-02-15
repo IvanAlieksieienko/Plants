@@ -4,9 +4,9 @@
         <a routerLink=""><span id="title">СЛАДКИЙ САД</span></a>
     </div>
     <div class="links">
-        <a class="btn from" routerLink="about">О НАС</a>
-        <a class="btn from" routerLink="contact">КОНТАКТЫ</a>
-        <a class="btn from" routerLink="login" *ngIf="_sharedService._isShowLoginButton">ВОЙТИ</a>
-        <button class="btn from" (click)="logout()" *ngIf="!_sharedService._isShowLoginButton">ВЫЙТИ</button>
+        <a class="btn-hover" routerLink="about">О НАС</a>
+        <a class="btn-hover" routerLink="contact">КОНТАКТЫ</a>
+        <a class="btn-hover" routerLink="login" *ngIf="!_sharedService._isAuthenticated">ВОЙТИ</a>
+        <button class="btn-hover" (click)="logout()" *ngIf="_sharedService._isAuthenticated">ВЫЙТИ</button>
     </div>
 </div>

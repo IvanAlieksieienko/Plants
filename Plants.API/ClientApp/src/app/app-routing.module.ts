@@ -6,6 +6,7 @@ import { SharedService } from "./services/shared.service";
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'login', loadChildren: "./modules/login/login.module#LoginModule"},
+    {path: 'category', loadChildren: "./modules/category/category.module#CategoryModule"},
     {path: '**', component: HomeComponent}
 ]
 

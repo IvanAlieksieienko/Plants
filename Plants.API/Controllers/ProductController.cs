@@ -10,7 +10,7 @@ using Plants.Core.IServices;
 
 namespace Plants.API.Controllers
 {
-    [Route("/product")]
+    [Route("product")]
     [ApiController]
     public class ProductController : Controller
     {

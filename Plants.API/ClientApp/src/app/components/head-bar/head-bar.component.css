@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     border-bottom: 1px solid #55C34D;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 span {
@@ -48,3 +49,27 @@ span {
 .btn {
     font-size: 2em;
 }
+
+.btn-hover {
+    font-size: 2em;
+    color: black;
+    background: white;
+    border: none;
+    
+    text-decoration: none;
+    display: inline-block;
+    width: 195px;
+    margin-left: 5%;
+    margin-top: 30px;
+    text-align: center;
+    padding:6px 12px 6px 12px;
+    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.btn-hover:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: #55C34D;
+    /* border: 1px solid white; */
+    color: white;
+}
+

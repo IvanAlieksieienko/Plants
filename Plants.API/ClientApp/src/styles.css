@@ -70,3 +70,64 @@
   color: white;
   border: 1px solid white;
 }
+
+/*****************************************/
+.btn-control {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  background: #55C34D !important;
+  border: 1px solid #55C34D;
+  color: white;
+  transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+.btn-control:before,
+.btn-control:after {
+  content: '';
+  position: absolute;
+  transition: inherit;
+  z-index: -1;
+}
+
+.btn-control:hover {
+  color: black;
+  transition-delay: .3s;
+}
+
+.btn-control:hover:before {
+  transition-delay: 0s;
+}
+
+.btn-control:hover:after {
+  background: white;
+  transition-delay: .2s;
+}
+
+.from-control:before {
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 0;
+  border: 1px solid #55C34D;
+  border-left: 0;
+  border-right: 0;
+}
+
+.from-control:after {
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background: white;
+}
+
+.from-control:hover:before {
+  left: 0;
+  width: 100%;
+}
+
+.from-control:hover:after {
+  top: 0;
+  height: 100%;
+}
