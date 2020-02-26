@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -56,6 +58,32 @@ namespace Plants.API.Controllers
         public async Task<IActionResult> Delete(Guid ID)
         {
             await _categoryService.Delete(ID);
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var folderName = Path.Combine("Resources", "Images", "Category");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            if (file.Length > 0)
+            {
+                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                var fullPath = Path.Combine(path, fileName);
+                var dbPath = Path.Combine(folderName, fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                    stream.Close();
+                }
+                
+
+                return Ok(new { dbPath });
+            }
             return Ok();
         }
     }

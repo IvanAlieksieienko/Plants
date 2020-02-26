@@ -3,6 +3,7 @@ import { CategoryService } from "src/app/services/category.service";
 import { CategoryModel } from "src/app/models/category.model";
 import { SharedService } from "src/app/services/shared.service";
 import { LoginService } from "src/app/services/login.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "side-bar",
@@ -16,7 +17,7 @@ export class SideBarComponent {
     private _categories: CategoryModel[];
     private _isShowCategories: boolean = true;
 
-    constructor(serviceCategory: CategoryService, private _sharedService: SharedService, serviceLogin: LoginService) {
+    constructor(serviceCategory: CategoryService, private _sharedService: SharedService, serviceLogin: LoginService, private router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceLogin = serviceLogin;
     }
@@ -40,5 +41,10 @@ export class SideBarComponent {
                 console.log(response);
             }
         })
+    }
+
+    checkCategory(category: CategoryModel) {
+        console.log(category);
+        this.router.navigate(['category/get', category.id ]);
     }
 }

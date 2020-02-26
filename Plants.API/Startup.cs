@@ -13,6 +13,10 @@ using Plants.Core.Services;
 using Plants.Infrastructure.Repositories;
 using Newtonsoft.Json;
 using Newtonsoft;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Plants.API
 {
@@ -25,7 +29,6 @@ namespace Plants.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -49,9 +52,13 @@ namespace Plants.API
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/login");
                 });
 
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -77,6 +84,12 @@ namespace Plants.API
                     name: "default",
                     pattern: "{controller}/{action}/{id?}");
             });
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseSpa(spa =>
             {
@@ -91,6 +104,7 @@ namespace Plants.API
                 }
             });
 
+            
         }
     }
 }
