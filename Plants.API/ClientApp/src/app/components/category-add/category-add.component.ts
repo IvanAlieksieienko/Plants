@@ -19,7 +19,7 @@ export class CategoryAddComponent {
     }
 
     ngOnInit() { 
-        this.model.ImagePath = "Resources\\Images\\default-tree.png";
+        this.model.imagePath = "Resources\\Images\\default-tree.png";
     }
 
     onSelectFile(event) { // called each time file input changes
@@ -28,18 +28,18 @@ export class CategoryAddComponent {
             this._serviceCategory.uploadImage(fileToUpload).subscribe(response => {
                 if (response != null && response.dbPath != "") {
                     console.log(response);
-                    this.model.ImagePath = "";
-                    this.model.ImagePath += response.dbPath;
-                    console.log(this.model.ImagePath);
+                    this.model.imagePath = "";
+                    this.model.imagePath += response.dbPath;
+                    console.log(this.model.imagePath);
                 }
             });
         }
     }
 
     add() {
-        if (this.model.Name != "") {
+        if (this.model.name != "") {
             this._serviceCategory.add(this.model).subscribe();
-            console.log(this.model.Description);
+            console.log(this.model.description);
         }
         else {
             alert("Введите имя!");

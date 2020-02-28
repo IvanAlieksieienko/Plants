@@ -28,7 +28,11 @@ export class CategoryGetByIDComponent {
             this.categoryID = Guid.parse(response);
             console.log(this.categoryID);
             this._serviceCategory.getByID(this.categoryID).subscribe(response => {
-                console.log(response);
+                this.category = response;
+                console.log(this.category);
+                if (this.category.imagePath == "") {
+                    this.category.imagePath = "Resources\\Images\\default-tree.png";
+                }
             })
         });
     }

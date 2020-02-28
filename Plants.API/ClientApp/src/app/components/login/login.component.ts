@@ -25,13 +25,13 @@ export class LoginComponent {
 
     login() {
         var model = new AdminModel();
-        model.Login = "";
-        model.Password = "";
-        model.Login = this.loginString;
-        model.Password = this.passwordString;
+        model.login = "";
+        model.password = "";
+        model.login = this.loginString;
+        model.password = this.passwordString;
         console.log(model);
         console.log(this.loginString + this.passwordString);
-        if ((model.Login != "" && model.Login != undefined) && (model.Password != "" && model.Password != undefined)) {
+        if ((model.login != "" && model.login != undefined) && (model.password != "" && model.password != undefined)) {
             this._serviceLogin.login(model).subscribe(response => {
                 if (response != null) {
                     this._sharedService._isAuthenticated = true;

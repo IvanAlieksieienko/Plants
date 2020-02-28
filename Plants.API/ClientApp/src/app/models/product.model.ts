@@ -1,11 +1,11 @@
 import { Guid } from "guid-typescript";
 
 export class ProductModel {
-    public ID: Guid;
-    public CategoryID: Guid;
-    public IsAvailable: boolean;
-    public Name: string;
-    public Description: string;
-    public ImagePath: string;
-    public Price: number;
+    public id: Guid;
+    public categoryID: Guid;
+    public isAvailable: boolean;
+    public name: string;
+    public description: string;
+    public imagePath: string;
+    public price: number;
 }
