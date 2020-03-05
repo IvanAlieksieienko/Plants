@@ -23,7 +23,6 @@
     height: calc(100% - 150px);
     overflow-y: auto;
     border-bottom: 1px dashed #55C34D;
-    z-index: 2000;
 }
 
 .side .controll-without-create-button a {
@@ -34,7 +33,6 @@
     height: calc(100% - 70px);
     overflow-y: auto;
     border-bottom: 1px dashed #55C34D;
-    z-index: 2000;
 }
 
 .side-no-categories {
@@ -60,9 +58,9 @@
     padding: 6px 12px 6px 12px;
 }
 
-.btn-hover:hover {
+.btn-white:hover {
     position: relative;
-    color: white;
+    z-index: 1002;
 }
 
 .btn-green {

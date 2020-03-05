@@ -3,9 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ProductModel } from "../models/product.model";
 import { Guid } from "guid-typescript";
+import { ImagePath } from "../models/image-path-model";
 
 @Injectable({ providedIn: 'root' })
-export class LoginService {
+export class ProductService {
 
     private url = "";
 
@@ -33,5 +34,13 @@ export class LoginService {
 
     public delete(id: Guid) {
         return this.http.delete(this.url + "product/" + id);
+    }
+
+    public uploadImage(file: File) : Observable<ImagePath> {
+        var formData = new FormData();
+        formData.append('file', file, file.name);
+        
+        return this.http.post<ImagePath>(this.url + "product/upload", formData);
+        formData.delete('file');
     }
 }

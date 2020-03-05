@@ -1,7 +1,21 @@
-<h2 style="margin-left: 15px; margin-top: 5px;">{{category.id}}</h2> 
-<br>
-<h2 style="margin-left: 15px; margin-top: 5px;">{{category.name}}</h2> 
-<br>
-<h2 style="margin-left: 15px; margin-top: 5px;">{{category.description}}</h2> 
-<br>
-<img [src]="category.imagePath" style="width: 204px; height: 270px;">
+<div class="category-description">
+    <div class="text-description">
+        <h1>{{category.name}}</h1>
+        <h4>{{category.description}}</h4>
+    </div>
+    <div class="image-description">
+        <img [src]="category.imagePath" style="width: 204px; height: 270px;">
+    </div>
+</div>
+<div class="category-products">
+    <div class="div-for-create-button" *ngIf="_sharedService._isAuthenticated">
+        <button class="btn-green" (click)="createProduct()" *ngIf="_sharedService._isAuthenticated">СОЗДАТЬ</button>
+    </div>
+    <ng-container *ngFor="let product of products; index as i">
+        <div class="product">
+            <img [src]="product.imagePath">
+            <span>{{product.name}}</span>
+        </div>
+    </ng-container>
+
+</div>
