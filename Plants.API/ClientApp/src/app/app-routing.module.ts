@@ -5,9 +5,9 @@ import { SharedService } from "./services/shared.service";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)},
-    {path: 'category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule)},
-    {path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)},
+    {path: 'login', loadChildren: "./modules/login/login.module#LoginModule"},
+    {path: 'category', loadChildren: "./modules/category/category.module#CategoryModule"},
+    {path: 'product', loadChildren: "./modules/product/product.module#ProductModule"},
     {path: '**', component: HomeComponent}
 ]
 

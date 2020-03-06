@@ -1,6 +1,6 @@
 <div class="main-area">
 	<div class="inputs">
-		<input class="name" type="text" [(ngModel)]="model.name" placeholder="имя продукта...">
+		<input class="name" type="text" [(ngModel)]="model.name" placeholder="имя категории...">
 		<button class="btn-white" *ngIf="!_isAvailable" (click)="turnAvailabless()">Нет в наличии</button>
 		<button class="btn-green" *ngIf="_isAvailable" (click)="turnAvailabless()">Есть в наличии</button>
 		<textarea class="description" [(ngModel)]="model.description" placeholder="описание..."></textarea>
