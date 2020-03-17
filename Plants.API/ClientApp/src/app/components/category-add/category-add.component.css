@@ -13,7 +13,8 @@
     height: 70%;
 }
 
-.main-area .inputs input, textarea {
+.main-area .inputs input,
+textarea {
     width: 80%;
     margin-left: 10%;
     margin-bottom: 5%;
@@ -51,7 +52,8 @@
     height: 70%;
 }
 
-.main-area .inputs-image input, img {
+.main-area .inputs-image input,
+.image-default {
     display: block;
     width: 100%;
 }
@@ -60,12 +62,14 @@
     margin-top: 30%;
 }
 
-.main-area .inputs-image img {
+.main-area .inputs-image .image-default {
     margin-top: 5%;
     width: 204px;
     height: 270px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.main-area .inputs-image .image-default img {}
 
 .main-area .inputs-image .form-group {
     margin-top: 24%;
@@ -111,7 +115,8 @@
     color: white;
 }
 
-.main-area .inputs-image .label:hover fa-icon, .main-area .inputs-image .label:hover .title {
+.main-area .inputs-image .label:hover fa-icon,
+.main-area .inputs-image .label:hover .title {
     color: white;
 }
 
@@ -124,8 +129,7 @@
         margin-left: 10%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
-
-    .main-area .inputs-image img {
+    .main-area .inputs-image .image-default {
         margin-top: 5%;
         width: 183px;
         height: 243px;
@@ -142,8 +146,7 @@
         margin-left: 10%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
-
-    .main-area .inputs-image img {
+    .main-area .inputs-image .image-default {
         margin-top: 5%;
         width: 153px;
         height: 202px;

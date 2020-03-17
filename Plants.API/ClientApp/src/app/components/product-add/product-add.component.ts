@@ -24,6 +24,8 @@ export class ProductAddComponent {
     private _serviceCategory: CategoryService;
     private _serviceProduct: ProductService;
     private _isAvailable: boolean = false;
+    private _isShowFullImage: boolean = false;
+    private _fullImagePath: string = "";
 
     constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
         this._serviceCategory = serviceCategory;
@@ -86,5 +88,15 @@ export class ProductAddComponent {
         else {
             alert("Введите имя!");
         }
+    }
+
+    showImage(path: string) {
+        this._isShowFullImage = true;
+        this._fullImagePath = path;
+    }
+
+    closeImageView() {
+        this._isShowFullImage = false;
+        this._fullImagePath = "";
     }
 }

@@ -18,7 +18,6 @@ E:\Work\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.csprojAssemblyRef
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\bin\Debug\netcoreapp3.1\Plants.Core.deps.json
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\bin\Debug\netcoreapp3.1\Plants.Core.dll
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\bin\Debug\netcoreapp3.1\Plants.Core.pdb
-C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.csprojAssemblyReference.cache
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.csproj.CoreCompileInputs.cache
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.AssemblyInfoInputs.cache
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.AssemblyInfo.cs

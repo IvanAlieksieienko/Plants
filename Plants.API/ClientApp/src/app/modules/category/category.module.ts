@@ -6,6 +6,7 @@ import { CategoryAddComponent } from "src/app/components/category-add/category-a
 import { CategoryRouterModule } from "./category-routing.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CategoryGetByIDComponent } from "src/app/components/category-get-by-id/category-get-by-id.component";
+import { CategoryUpdateComponent } from "src/app/components/category-update/category-update.component";
 
 @NgModule({ 
     imports: [
@@ -17,7 +18,8 @@ import { CategoryGetByIDComponent } from "src/app/components/category-get-by-id/
     declarations: [
         CategoryGetAllComponent,
         CategoryAddComponent,
-        CategoryGetByIDComponent
+        CategoryGetByIDComponent,
+        CategoryUpdateComponent
     ]
 })
 export class CategoryModule {}

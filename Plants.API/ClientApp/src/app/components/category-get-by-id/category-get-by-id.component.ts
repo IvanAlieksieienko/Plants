@@ -22,6 +22,11 @@ export class CategoryGetByIDComponent {
     private subscription: Subscription;
     private _serviceCategory: CategoryService;
     private _serviceProduct: ProductService;
+    private _isShowFullImage: boolean = false;
+    private _fullImagePath: string = "";
+    private _deleteMode: boolean = false;
+    private _deleteList: boolean[] = new Array();
+
     constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceProduct = serviceProduct;
@@ -53,5 +58,54 @@ export class CategoryGetByIDComponent {
 
     createProduct() {
         this.router.navigate(['product/create', this.category.id ]);
+    }
+
+    deleteCategory() {
+        this._serviceCategory.delete(this.categoryID).subscribe();
+        this.router.navigateByUrl("");
+    }
+
+    updateCategory() {
+        this.router.navigate(['category/update', this.category.id]);
+    }
+
+    showImage(path: string) {
+        this._isShowFullImage = true;
+        this._fullImagePath = path;
+    }
+
+    closeImageView() {
+        this._isShowFullImage = false;
+        this._fullImagePath = "";
+    }
+
+    deleteProductsMode() {
+        this._deleteMode = !this._deleteMode;
+    }
+
+    checkCategory(product: ProductModel) {
+        this.router.navigate(['product/get', product.id]);
+    }
+
+    addProductToDeleteList(product: ProductModel) {
+        var index = this.products.findIndex(p => p.id == product.id);
+        this._deleteList[index] = true;
+    }
+
+    removeProductFromDeleteList(product: ProductModel) {
+        var index = this.products.findIndex(p => p.id == product.id);
+        this._deleteList[index] = false;
+    }
+
+    deleteList() {
+
+        if (this._deleteList.length > 0) {
+            for (var i = 0; i < this._deleteList.length; i++) {
+                if (this._deleteList[i] == true) {
+                    this._serviceProduct.delete(this.products[i].id).subscribe();
+                }
+                this.router.navigateByUrl("category/");
+            }
+        }
     }
 }
