@@ -41,6 +41,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.main-area .btn-white:hover {
+    border: 1px solid white;
+}
+
 .main-area .inputs-image {
     float: right;
     width: 30%;
@@ -107,7 +111,7 @@
     color: white;
 }
 
-.main-area .inputs-image .label:hover fa-icon, .inputs-image .label:hover .title {
+.main-area .inputs-image .label:hover fa-icon, .main-area .inputs-image .label:hover .title {
     color: white;
 }
 

@@ -47,7 +47,7 @@ export class ProductAddComponent {
     onSelectFile(event) { // called each time file input changes
         if (event.target.files && event.target.files[0]) {
             var fileToUpload = event.target.files[0];
-            this._serviceCategory.uploadImage(fileToUpload).subscribe(response => {
+            this._serviceProduct.uploadImage(fileToUpload).subscribe(response => {
                 if (response != null && response.dbPath != "") {
                     console.log(response);
                     this.model.imagePath = "";

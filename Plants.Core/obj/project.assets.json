@@ -9,21 +9,19 @@
   },
   "packageFolders": {
     "C:\\Users\\alexe\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "N:\\Work\\Plants\\Plants.Core\\Plants.Core.csproj",
+      "projectUniqueName": "C:\\Users\\alexe\\OneDrive\\Рабочий стол\\Plants\\Plants.Core\\Plants.Core.csproj",
       "projectName": "Plants.Core",
-      "projectPath": "N:\\Work\\Plants\\Plants.Core\\Plants.Core.csproj",
+      "projectPath": "C:\\Users\\alexe\\OneDrive\\Рабочий стол\\Plants\\Plants.Core\\Plants.Core.csproj",
       "packagesPath": "C:\\Users\\alexe\\.nuget\\packages\\",
-      "outputPath": "N:\\Work\\Plants\\Plants.Core\\obj\\",
+      "outputPath": "C:\\Users\\alexe\\OneDrive\\Рабочий стол\\Plants\\Plants.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\alexe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

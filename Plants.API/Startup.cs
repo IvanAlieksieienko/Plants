@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Plants.API
 {
@@ -101,6 +102,7 @@ namespace Plants.API
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(500);
                 }
             });
 
