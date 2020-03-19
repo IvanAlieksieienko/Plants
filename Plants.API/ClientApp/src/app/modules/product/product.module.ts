@@ -4,7 +4,9 @@ import { FormsModule } from "@angular/forms";
 import { ProductAddComponent } from "src/app/components/product-add/product-add.component";
 import { ProductRouterModule } from "./product-routing.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { ProductGetByIDComponent } from "src/app/components/product-get-by-id/product-get-by-id.component";
+import { ProductUpdateComponent } from "src/app/components/product-update/product-update.component";
 
 @NgModule({
     imports: [
@@ -15,7 +17,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         NgbModule
     ],
     declarations: [
-        ProductAddComponent
+        ProductAddComponent,
+        ProductGetByIDComponent,
+        ProductUpdateComponent
     ]
 })
 export class ProductModule {}

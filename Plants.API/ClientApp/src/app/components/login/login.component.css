@@ -4,7 +4,7 @@
     height: 70%;
     margin-top: 5%;
     margin-left: 25%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .main-area .first-input {
@@ -19,11 +19,11 @@
     font-size: 1.5em;
     text-align: center;
     border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .main-area .btn-white {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 60%;
     margin-left: 20%;
     height: 15%;
@@ -38,9 +38,9 @@
     .main-area {
         background: #55C34D;
         width: 60%;
-        height: 50%;
+        height: 70%;
         margin-top: 5%;
         margin-left: 20%;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }    
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
 }

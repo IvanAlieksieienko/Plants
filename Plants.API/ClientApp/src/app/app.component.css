@@ -20,8 +20,8 @@ side-bar {
     position: absolute;
     overflow-y: auto;
     top: 125px;
-    left: 15%;
-    width: 85%;
+    left: 0;
+    width: 100%;
     height: calc(100% - 125px);
 }
 
@@ -34,7 +34,6 @@ side-bar {
         z-index: 1000;
         background: white;
     }
-
     side-bar {
         position: fixed;
         height: calc(100% - 125px);
@@ -43,15 +42,14 @@ side-bar {
         z-index: 999;
         background: white;
     }
-    
     .router-outlet {
         position: absolute;
         overflow-y: auto;
         top: 125px;
-        left: 25%;
-        width: 75%;
+        left: 0;
+        width: 100%;
         height: calc(100% - 125px);
-    }        
+    }
 }
 
 @media screen and (max-width: 875px) {
@@ -73,8 +71,8 @@ side-bar {
     .router-outlet {
         position: absolute;
         height: calc(100% - 140px);
-        width: 75%;
-        left: 25%;
+        left: 0;
+        width: 100%;
         top: 140px;
     }
 }

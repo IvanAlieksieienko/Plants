@@ -1,9 +1,10 @@
 .side {
     height: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.side a, button {
+.side a,
+button {
     text-decoration: none;
 }
 
@@ -37,7 +38,7 @@
 
 .side-no-categories {
     height: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .side-no-categories span {
@@ -50,7 +51,9 @@
 }
 
 .btn-white {
+    text-align: left;
     font-size: 1.7em;
+    border-radius: 0px;
     display: block;
     text-decoration: none;
     width: 100%;
@@ -70,7 +73,7 @@
     display: block;
     height: 50px;
     width: 90%;
-    padding:6px 12px 6px 12px;
+    padding: 6px 12px 6px 12px;
     margin-left: 5%;
 }
 

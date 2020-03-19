@@ -2,12 +2,12 @@
     height: 100%;
     width: 100%;
     border-bottom: 1px solid #55C34D;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .head .icon {
     display: block;
-    width: 50%;
+    width: 40%;
     height: 100%;
     float: left;
 }
@@ -33,29 +33,35 @@
 .head .links {
     float: right;
     height: 100%;
-    width: 50%;
+    width: 60%;
 }
-
-.head .links a, button {
-    width: 195px;
-    display: inline-block;
-    margin-left: 5%;
-    margin-top: 30px;
-}
-
 
 .head .links .btn-white {
     font-size: 2em;
     display: inline-block;
     width: 195px;
-    margin-left: 5%;
+    margin-left: 2%;
     margin-top: 30px;
-    padding:6px 12px 6px 12px;
+    padding: 6px 12px 6px 12px;
+    text-decoration: none;
+}
+
+.head .links .btn-green {
+    font-size: 2em;
+    display: inline-block;
+    width: 195px;
+    margin-left: 2%;
+    margin-top: 30px;
+    padding: 6px 12px 6px 12px;
     text-decoration: none;
 }
 
 .head .links .categories {
     display: none;
+}
+
+.head .links .sidebar {
+    display: inline-block;
 }
 
 @media screen and (max-width: 1400px) {
@@ -66,23 +72,42 @@
         margin-left: 15px;
         margin-top: 10px;
     }
-
     .head .icon {
         display: block;
         width: 30%;
         height: 100%;
         float: left;
     }
-
     .head .links {
         float: right;
         height: 100%;
         width: 70%;
     }
+    .head .links .btn-white {
+        font-size: 1.5em;
+        display: inline-block;
+        width: 165px;
+        margin-left: 3%;
+        margin-top: 37px;
+        padding: 6px 12px 6px 12px;
+        text-decoration: none;
+    }
+    .head .links .btn-green {
+        font-size: 1.5em;
+        display: inline-block;
+        width: 165px;
+        margin-left: 3%;
+        margin-top: 37px;
+        padding: 6px 12px 6px 12px;
+        text-decoration: none;
+    }
 }
 
+.head .links .categories {
+    display: none;
+}
 
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1070px) {
     .head .icon span {
         font-family: 'Roboto', sans-serif;
         font-size: 2em;
@@ -91,42 +116,46 @@
         width: 50%;
         margin-top: 0px;
     }
-
     .head .icon fa-icon {
         display: inline-block;
         margin-left: 30%;
         width: 10%;
         margin-top: 5px;
     }
-
     .head .icon {
         display: block;
         width: 100%;
         height: 50%;
     }
-
     .head .links {
         float: right;
         width: 100%;
         height: 50%;
     }
-
-    .head .links a, button {
+    .head .links a,
+    button {
         display: inline-block;
         margin-left: 5%;
         margin-top: 10px;
     }
-    
     .head .links .btn-white {
         font-size: 1.5em;
         display: inline-block;
-       width: 20%;
-        margin-left: 10%;
+        width: 20%;
+        margin-left: 4%;
         margin-top: 10px;
-        padding:6px 12px 6px 12px;
+        padding: 6px 12px 6px 12px;
         text-decoration: none;
     }
-
+    .head .links .btn-green {
+        font-size: 1.5em;
+        display: inline-block;
+        width: 20%;
+        margin-left: 4%;
+        margin-top: 10px;
+        padding: 6px 12px 6px 12px;
+        text-decoration: none;
+    }
     .head .links .categories {
         display: none;
     }
@@ -141,42 +170,49 @@
         margin-left: 15px;
         margin-top: 5px;
     }
-
     .head .icon fa-icon {
         float: left;
         margin-left: 15%;
         margin-top: 5px;
     }
-
     .head .icon {
         display: block;
         width: 100%;
         height: 50%;
     }
-
     .head .links {
         float: right;
         width: 100%;
         height: 50%;
     }
-
-    .head .links a, button {
+    .head .links a,
+    button {
         display: inline-block;
         margin-left: 0%;
         margin-top: 10px;
     }
-    
     .head .links .btn-white {
         font-size: 1.3em;
         display: inline-block;
         width: 25%;
         margin-left: 0%;
         margin-top: 10px;
-        padding:6px 12px 6px 12px;
+        padding: 6px 12px 6px 12px;
         text-decoration: none;
     }
-
+    .head .links .btn-green {
+        font-size: 1.3em;
+        display: inline-block;
+        width: 25%;
+        margin-left: 0%;
+        margin-top: 10px;
+        padding: 6px 12px 6px 12px;
+        text-decoration: none;
+    }
     .head .links .categories {
         display: inline-block;
+    }
+    .head .links .sidebar {
+        display: none;
     }
 }

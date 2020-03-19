@@ -83,7 +83,7 @@ export class CategoryGetByIDComponent {
         this._deleteMode = !this._deleteMode;
     }
 
-    checkCategory(product: ProductModel) {
+    checkProduct(product: ProductModel) {
         this.router.navigate(['product/get', product.id]);
     }
 

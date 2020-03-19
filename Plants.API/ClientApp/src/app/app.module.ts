@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
 import { SharedService } from './services/shared.service';
+import { SidebarModule } from 'ng-sidebar';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SharedService } from './services/shared.service';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SidebarModule.forRoot()
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

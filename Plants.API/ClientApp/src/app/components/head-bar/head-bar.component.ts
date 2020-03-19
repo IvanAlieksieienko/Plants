@@ -33,4 +33,8 @@ export class HeadBarComponent {
             this.router.navigateByUrl("");
         })
     }
+
+    sideBar() {
+        this._sharedService._isSideBarHidden = !this._sharedService._isSideBarHidden;
+    }
 }
