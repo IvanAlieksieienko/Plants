@@ -12,6 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
 import { SharedService } from './services/shared.service';
 import { SidebarModule } from 'ng-sidebar';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SidebarModule } from 'ng-sidebar';
     AppComponent,
     HeadBarComponent,
     SideBarComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
