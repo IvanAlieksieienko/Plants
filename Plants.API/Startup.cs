@@ -37,7 +37,10 @@ namespace Plants.API
             {
                 // ...
             });
+            /* Development mode */
             var connectionString = Configuration.GetConnectionString("LocalDB");
+            /* Production mode */
+            //var connectionString = Configuration.GetConnectionString("RemoteDB");
 
             services.AddScoped<ICategoryRepository<Category>, CategoryRepository>(provider => new CategoryRepository(connectionString));
             services.AddScoped<IProductRepository<Product>, ProductRepository>(provider => new ProductRepository(connectionString));
@@ -58,6 +61,9 @@ namespace Plants.API
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.MemoryBufferThreshold = int.MaxValue;
             });
+
+            /* Production mode */
+            //services.AddSpaStaticFiles(configuration => configuration.RootPath = $"ClientApp/dist");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,6 +73,7 @@ namespace Plants.API
                 app.UseDeveloperExceptionPage();
             }
 
+            /* Development mode */
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -92,11 +99,13 @@ namespace Plants.API
                 RequestPath = new PathString("/Resources")
             });
 
+            /* Production mode */
+            //app.UseSpaStaticFiles();
+            //app.UseSpa(configuration => { /*spa.Options.SourcePath = "ClientApp";*/ });
+
+            /* Development mode */
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
@@ -105,8 +114,6 @@ namespace Plants.API
                     spa.Options.StartupTimeout = TimeSpan.FromSeconds(500);
                 }
             });
-
-            
         }
     }
 }

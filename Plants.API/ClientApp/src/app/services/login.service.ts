@@ -4,9 +4,9 @@ import { AdminModel } from "../models/login.model";
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-    private url = "";
+    public url = "";
 
-    constructor(private http: HttpClient) {}
+    constructor(public http: HttpClient) {}
 
     public login(model: AdminModel) {
         return this.http.post(this.url + "/login", model);

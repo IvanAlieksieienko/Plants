@@ -8,9 +8,9 @@ import { ImagePath } from "../models/image-path-model";
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-    private url = "";
+    public url = "";
 
-    constructor(private http: HttpClient) {}
+    constructor(public http: HttpClient) {}
 
     public getAll() : Observable<ProductModel[]> {
         return this.http.get<ProductModel[]>(this.url + "product/all");

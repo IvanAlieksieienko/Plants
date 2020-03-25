@@ -3,19 +3,22 @@ import { AdminModel } from "src/app/models/login.model";
 import { LoginService } from "src/app/services/login.service";
 import { SharedService } from "src/app/services/shared.service";
 import { Router } from "@angular/router";
+import { CanComponentDeactivate } from "src/app/services/can-deactive.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements CanComponentDeactivate {
 
-    private loginString: string;
-    private passwordString: string;
-    private _serviceLogin: LoginService;
+    public loginString: string;
+    public passwordString: string;
+    public _serviceLogin: LoginService;
+    public sended: boolean = false;
 
-    constructor(serviceLogin: LoginService, private _sharedService: SharedService, private router: Router) {
+    constructor(serviceLogin: LoginService, public _sharedService: SharedService, public router: Router) {
         this._serviceLogin = serviceLogin;
     }
 
@@ -31,6 +34,7 @@ export class LoginComponent {
         model.password = this.passwordString;
         console.log(model);
         console.log(this.loginString + this.passwordString);
+        this.sended = true;
         if ((model.login != "" && model.login != undefined) && (model.password != "" && model.password != undefined)) {
             this._serviceLogin.login(model).subscribe(response => {
                 if (response != null) {
@@ -46,4 +50,11 @@ export class LoginComponent {
             alert("Поля пустые!");
         }
     }
+
+    public canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+        if (!this.sended) {
+            return confirm('Не сохраненные изменения! Уйти?');
+        }
+        return true;
+	}
 }

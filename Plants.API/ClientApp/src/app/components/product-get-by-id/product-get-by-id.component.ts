@@ -17,17 +17,17 @@ import { NgbCarousel } from "@ng-bootstrap/ng-bootstrap";
 })
 export class ProductGetByIDComponent {
     icon = faArrowLeft;
-    private _productID: Guid;
-    private _product: ProductModel = new ProductModel();
-    private _category: CategoryModel = new CategoryModel();
-    private _serviceProduct: ProductService;
-    private _serviceCategory: CategoryService;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
+    public _productID: Guid;
+    public _product: ProductModel = new ProductModel();
+    public _category: CategoryModel = new CategoryModel();
+    public _serviceProduct: ProductService;
+    public _serviceCategory: CategoryService;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
 
-    @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+    @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
-    constructor(private activateRoute: ActivatedRoute, serviceProduct: ProductService, serviceCategory: CategoryService, private _sharedService: SharedService, private router: Router) {
+    constructor(public activateRoute: ActivatedRoute, serviceProduct: ProductService, serviceCategory: CategoryService, public _sharedService: SharedService, public router: Router) {
         this._serviceProduct = serviceProduct;
         this._serviceCategory = serviceCategory;
     }
@@ -76,9 +76,11 @@ export class ProductGetByIDComponent {
     }
 
     delete() {
-        this._serviceProduct.delete(this._product.id).subscribe(response => {
-            this.router.navigate(['category/get', this._product.categoryID]);
-        });
+        if (confirm("Уверены, что хотите удалить этот продукт?")) {
+            this._serviceProduct.delete(this._product.id).subscribe(response => {
+                this.router.navigate(['category/get', this._product.categoryID]);
+            });
+        }
     }
 
     update() {

@@ -11,9 +11,9 @@ import { Router } from "@angular/router";
 })
 export class HeadBarComponent {
     mainIcon = faSeedling;
-    private _serviceLogin: LoginService;
+    public _serviceLogin: LoginService;
 
-    constructor(private _sharedService: SharedService, serviceLogin: LoginService, private router: Router) {
+    constructor(public _sharedService: SharedService, serviceLogin: LoginService, public router: Router) {
         this._serviceLogin = serviceLogin;
     }
     

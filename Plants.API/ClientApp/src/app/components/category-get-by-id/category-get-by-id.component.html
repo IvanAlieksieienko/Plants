@@ -1,4 +1,8 @@
 <div class="category-description">
+    <button class="btn-white" (click)="backToCategories()">
+        <fa-icon [icon]="icon" size="1x"></fa-icon>
+        <span>Назад</span>
+    </button>
     <div class="text-description">
         <h1>{{category.name}}</h1>
         <h4>{{category.description}}</h4>

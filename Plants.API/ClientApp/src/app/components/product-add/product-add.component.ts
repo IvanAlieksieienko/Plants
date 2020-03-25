@@ -8,26 +8,29 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { Guid } from "guid-typescript";
 import { CategoryModel } from "src/app/models/category.model";
+import { CanComponentDeactivate } from "src/app/services/can-deactive.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'product-add', 
     templateUrl: 'product-add.component.html',
     styleUrls: ['product-add.component.css']
 })
-export class ProductAddComponent {
+export class ProductAddComponent implements CanComponentDeactivate{
 
     icon = faPaperclip;
-    private model: ProductModel = new ProductModel();
-    private categoryID: Guid;
-    private choosedCategory: CategoryModel;
-    private categories: CategoryModel[];
-    private _serviceCategory: CategoryService;
-    private _serviceProduct: ProductService;
-    private _isAvailable: boolean = false;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
+    public model: ProductModel = new ProductModel();
+    public categoryID: Guid;
+    public choosedCategory: CategoryModel;
+    public categories: CategoryModel[];
+    public _serviceCategory: CategoryService;
+    public _serviceProduct: ProductService;
+    public _isAvailable: boolean = true;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
+    public sended: boolean = false;
 
-    constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
+    constructor(public activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, public _sharedService: SharedService, public router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceProduct = serviceProduct;
     }
@@ -80,6 +83,7 @@ export class ProductAddComponent {
         if (this.model.name != "") {
             this.model.categoryID = this.choosedCategory.id;
             this.model.isAvailable = this._isAvailable;
+            this.sended = true;
             this._serviceProduct.add(this.model).subscribe(Response => {
                 this.router.navigate(['category/get', this.choosedCategory.id ])
             });
@@ -99,4 +103,11 @@ export class ProductAddComponent {
         this._isShowFullImage = false;
         this._fullImagePath = "";
     }
+
+    public canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+		if (!this.sended) {
+            return confirm('Не сохраненные изменения! Уйти?');
+        }
+        return true;
+	}
 }

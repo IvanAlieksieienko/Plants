@@ -3,21 +3,24 @@ import { CategoryModel } from "src/app/models/category.model";
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from "src/app/services/category.service";
 import { Router } from "@angular/router";
+import { CanComponentDeactivate } from "src/app/services/can-deactive.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'category-add',
     templateUrl: './category-add.component.html',
     styleUrls: ['./category-add.component.css']
 })
-export class CategoryAddComponent {
+export class CategoryAddComponent implements CanComponentDeactivate {
 
     icon = faPaperclip;
-    private model: CategoryModel = new CategoryModel();
-    private _serviceCategory: CategoryService;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
+    public model: CategoryModel = new CategoryModel();
+    public _serviceCategory: CategoryService;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
+    public sended: boolean = false;
 
-    constructor(private serviceCategory: CategoryService, private router: Router) {
+    constructor(public serviceCategory: CategoryService, public router: Router) {
         this._serviceCategory = serviceCategory;
     }
 
@@ -41,6 +44,7 @@ export class CategoryAddComponent {
 
     add() {
         if (this.model.name != "") {
+            this.sended = true;
             this._serviceCategory.add(this.model).subscribe(response => {
                 this.router.navigate(['category/get', response.id ])
             });
@@ -60,4 +64,11 @@ export class CategoryAddComponent {
         this._isShowFullImage = false;
         this._fullImagePath = "";
     }
+
+    public canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+		if (!this.sended) {
+            return confirm('Не сохраненные изменения! Уйти?');
+        }
+        return true;
+	}
 }

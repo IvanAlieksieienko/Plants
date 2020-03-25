@@ -11,13 +11,13 @@ import { Router } from "@angular/router";
 })
 export class CategoryGetAllComponent {
 
-    private _serviceCategory: CategoryService;
-    private _categories: CategoryModel[] = new Array();
-    private _deleteList: boolean[] = new Array();
-    private _isCategories: boolean = false;
-    private _deleteMode: boolean = false;
+    public _serviceCategory: CategoryService;
+    public _categories: CategoryModel[] = new Array();
+    public _deleteList: boolean[] = new Array();
+    public _isCategories: boolean = false;
+    public _deleteMode: boolean = false;
 
-    constructor(serviceCategory: CategoryService, private _sharedService: SharedService, private router: Router) {
+    constructor(serviceCategory: CategoryService, public _sharedService: SharedService, public router: Router) {
         this._serviceCategory = serviceCategory;
     }
 
@@ -62,13 +62,14 @@ export class CategoryGetAllComponent {
     }
 
     deleteList() {
-
-        if (this._deleteList.length > 0) {
-            for (var i = 0; i < this._deleteList.length; i++) {
-                if (this._deleteList[i] == true) {
-                    this._serviceCategory.delete(this._categories[i].id).subscribe();
+        if (confirm("Уверены, что хотите удалить?")) {
+            if (this._deleteList.length > 0) {
+                for (var i = 0; i < this._deleteList.length; i++) {
+                    if (this._deleteList[i] == true) {
+                        this._serviceCategory.delete(this._categories[i].id).subscribe();
+                    }
                 }
-                this.router.navigateByUrl("category/");
+                window.location.reload();
             }
         }
     }

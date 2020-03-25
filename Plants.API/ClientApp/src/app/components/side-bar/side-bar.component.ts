@@ -12,12 +12,12 @@ import { Router } from "@angular/router";
 })
 export class SideBarComponent {
 
-    private _serviceCategory: CategoryService;
-    private _serviceLogin: LoginService;
-    private _categories: CategoryModel[];
-    private _isShowCategories: boolean = true;
+    public _serviceCategory: CategoryService;
+    public _serviceLogin: LoginService;
+    public _categories: CategoryModel[];
+    public _isShowCategories: boolean = true;
 
-    constructor(serviceCategory: CategoryService, private _sharedService: SharedService, serviceLogin: LoginService, private router: Router) {
+    constructor(serviceCategory: CategoryService, public _sharedService: SharedService, serviceLogin: LoginService, public router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceLogin = serviceLogin;
     }

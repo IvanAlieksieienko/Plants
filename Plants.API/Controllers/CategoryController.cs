@@ -17,10 +17,12 @@ namespace Plants.API.Controllers
     public class CategoryController : Controller
     {
         private ICategoryService _categoryService;
+        private IProductService _productService;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, IProductService productService)
         {
             _categoryService = categoryService;
+            _productService = productService;
         }
 
         [HttpGet("all")]
@@ -57,6 +59,21 @@ namespace Plants.API.Controllers
         [HttpDelete("{ID:guid}")]
         public async Task<IActionResult> Delete(Guid ID)
         {
+            var category = await _categoryService.GetByID(ID);
+            var products = await _productService.GetByCategoryID(category.ID);
+            foreach (var product in products)
+            {
+                if (product.ImagePath != @"Resources\Images\default-tree.png")
+                {
+                    System.IO.File.Delete(product.ImagePath);
+                }
+                await _productService.Delete(product.ID);
+            }
+            if (category != null && category.ImagePath != @"Resources\Images\default-tree.png")
+            {
+                System.IO.File.Delete(category.ImagePath);
+            }
+
             await _categoryService.Delete(ID);
             return Ok();
         }

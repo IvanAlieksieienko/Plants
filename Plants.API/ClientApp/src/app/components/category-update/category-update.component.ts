@@ -7,23 +7,26 @@ import { ProductService } from "src/app/services/product.service";
 import { SharedService } from "src/app/services/shared.service";
 import { switchMap } from "rxjs/operators";
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { CanComponentDeactivate } from "src/app/services/can-deactive.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'category-update',
     templateUrl: 'category-update.component.html',
     styleUrls: ['category-update.component.css']
 })
-export class CategoryUpdateComponent {
+export class CategoryUpdateComponent implements CanComponentDeactivate {
 
     icon = faPaperclip;
-    private categoryID: Guid;
-    private category: CategoryModel;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
-    private _serviceCategory: CategoryService;
-    private _serviceProduct: ProductService;
+    public categoryID: Guid;
+    public category: CategoryModel;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
+    public _serviceCategory: CategoryService;
+    public _serviceProduct: ProductService;
+    public sended: boolean = false;
 
-    constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
+    constructor(public activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, public _sharedService: SharedService, public router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceProduct = serviceProduct;
     }
@@ -44,10 +47,25 @@ export class CategoryUpdateComponent {
         });
     }
 
+    onSelectFile(event) { // called each time file input changes
+        if (event.target.files && event.target.files[0]) {
+            var fileToUpload = event.target.files[0];
+            this._serviceCategory.uploadImage(fileToUpload).subscribe(response => {
+                if (response != null && response.dbPath != "") {
+                    console.log(response);
+                    this.category.imagePath = "";
+                    this.category.imagePath += response.dbPath;
+                }
+            });
+        }
+    }
+
     update() {
         if (this.category.name != "") {
+            this.sended = true;
             this._serviceCategory.update(this.category).subscribe(response => {
-                this.router.navigate(['category/get', response.id ])
+                
+                this.router.navigate(['category/get', response.id]);
             });
             console.log(this.category.description);
         }
@@ -64,5 +82,12 @@ export class CategoryUpdateComponent {
     closeImageView() {
         this._isShowFullImage = false;
         this._fullImagePath = "";
+    }
+
+    public canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+        if (!this.sended) {
+            return confirm('Не сохраненные изменения! Уйти?');
+        }
+        return true;
     }
 }

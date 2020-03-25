@@ -9,11 +9,11 @@ import { Router } from "@angular/router";
 export class ContactComponent {
 
     pic = "Resources//Images//contact.jpg";
-    private first: boolean = false;
-    private second: boolean = false;
-    private third: boolean = false;
+    public first: boolean = false;
+    public second: boolean = false;
+    public third: boolean = false;
 
-    constructor(private router: Router) { }
+    constructor(public router: Router) { }
 
     ngOnInit() {
 

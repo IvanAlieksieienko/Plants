@@ -8,25 +8,28 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { Guid } from "guid-typescript";
 import { CategoryModel } from "src/app/models/category.model";
+import { CanComponentDeactivate } from "src/app/services/can-deactive.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'product-update', 
     templateUrl: 'product-update.component.html',
     styleUrls: ['product-update.component.css']
 })
-export class ProductUpdateComponent {
+export class ProductUpdateComponent implements CanComponentDeactivate {
 
     icon = faPaperclip;
-    private model: ProductModel = new ProductModel();
-    private productID: Guid;
-    private choosedCategory: CategoryModel;
-    private categories: CategoryModel[];
-    private _serviceCategory: CategoryService;
-    private _serviceProduct: ProductService;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
+    public model: ProductModel = new ProductModel();
+    public productID: Guid;
+    public choosedCategory: CategoryModel;
+    public categories: CategoryModel[];
+    public _serviceCategory: CategoryService;
+    public _serviceProduct: ProductService;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
+    public sended: boolean = true;
 
-    constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
+    constructor(public activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, public _sharedService: SharedService, public router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceProduct = serviceProduct;
     }
@@ -79,6 +82,7 @@ export class ProductUpdateComponent {
     add() {
         if (this.model.name != "") {
             this.model.categoryID = this.choosedCategory.id;
+            this.sended = true;
             this._serviceProduct.update(this.model).subscribe(Response => {
                 this.router.navigate(['product/get', this.model.id ])
             });
@@ -98,4 +102,11 @@ export class ProductUpdateComponent {
         this._isShowFullImage = false;
         this._fullImagePath = "";
     }
+
+    public canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+	    if (!this.sended) {
+            return confirm('Не сохраненные изменения! Уйти?');
+        }
+        return true;
+	}
 }

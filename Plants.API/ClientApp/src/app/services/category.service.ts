@@ -7,9 +7,9 @@ import { ImagePath } from "../models/image-path-model";
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
-    private url = "";
+    public url = "";
 
-    constructor(private http: HttpClient) {}
+    constructor(public http: HttpClient) {}
 
     public add(model: CategoryModel) : Observable<CategoryModel> {
         return this.http.post<CategoryModel>(this.url + "category/add", model);

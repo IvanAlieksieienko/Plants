@@ -23,3 +23,4 @@ C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\net
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.AssemblyInfo.cs
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.dll
 C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.pdb
+C:\Users\alexe\OneDrive\Рабочий стол\Plants\Plants.Core\obj\Debug\netcoreapp3.1\Plants.Core.csprojAssemblyReference.cache

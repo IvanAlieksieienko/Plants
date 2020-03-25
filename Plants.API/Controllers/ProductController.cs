@@ -64,6 +64,11 @@ namespace Plants.API.Controllers
         [HttpDelete("{ID:guid}")]
         public async Task<IActionResult> Delete(Guid ID)
         {
+            var product = await _productService.GetByID(ID);
+            if (product != null && product.ImagePath != @"Resources\Images\default-tree.png")
+            {
+                System.IO.File.Delete(product.ImagePath);
+            }
             await _productService.Delete(ID);
             return Ok();
         }

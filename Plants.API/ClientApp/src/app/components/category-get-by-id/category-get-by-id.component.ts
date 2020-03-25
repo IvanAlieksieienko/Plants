@@ -8,6 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import { ProductService } from "src/app/services/product.service";
 import { ProductModel } from "src/app/models/product.model";
 import { SharedService } from "src/app/services/shared.service";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'category-get-by-id',
@@ -16,18 +17,19 @@ import { SharedService } from "src/app/services/shared.service";
 })
 export class CategoryGetByIDComponent {
 
-    private categoryID: Guid;
-    private category: CategoryModel;
-    private products: ProductModel[];
-    private subscription: Subscription;
-    private _serviceCategory: CategoryService;
-    private _serviceProduct: ProductService;
-    private _isShowFullImage: boolean = false;
-    private _fullImagePath: string = "";
-    private _deleteMode: boolean = false;
-    private _deleteList: boolean[] = new Array();
+    icon = faArrowLeft;
+    public categoryID: Guid;
+    public category: CategoryModel;
+    public products: ProductModel[];
+    public subscription: Subscription;
+    public _serviceCategory: CategoryService;
+    public _serviceProduct: ProductService;
+    public _isShowFullImage: boolean = false;
+    public _fullImagePath: string = "";
+    public _deleteMode: boolean = false;
+    public _deleteList: boolean[] = new Array();
 
-    constructor(private activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, private _sharedService: SharedService, private router: Router) {
+    constructor(public activateRoute: ActivatedRoute, serviceCategory: CategoryService, serviceProduct: ProductService, public _sharedService: SharedService, public router: Router) {
         this._serviceCategory = serviceCategory;
         this._serviceProduct = serviceProduct;
     }
@@ -57,12 +59,14 @@ export class CategoryGetByIDComponent {
     }
 
     createProduct() {
-        this.router.navigate(['product/create', this.category.id ]);
+        this.router.navigate(['product/create', this.category.id]);
     }
 
     deleteCategory() {
-        this._serviceCategory.delete(this.categoryID).subscribe();
-        this.router.navigateByUrl("");
+        if (confirm("Уверены, что хотите удалить эту категорию?")) {
+            this._serviceCategory.delete(this.categoryID).subscribe();
+            this.router.navigateByUrl("");
+        }
     }
 
     updateCategory() {
@@ -98,14 +102,20 @@ export class CategoryGetByIDComponent {
     }
 
     deleteList() {
+        if (confirm("Уверены, что хотите удалить?")) {
+            if (this._deleteList.length > 0) {
+                for (var i = 0; i < this._deleteList.length; i++) {
+                    if (this._deleteList[i] == true) {
+                        this._serviceProduct.delete(this.products[i].id).subscribe();
+                    }
 
-        if (this._deleteList.length > 0) {
-            for (var i = 0; i < this._deleteList.length; i++) {
-                if (this._deleteList[i] == true) {
-                    this._serviceProduct.delete(this.products[i].id).subscribe();
                 }
-                this.router.navigateByUrl("category/");
+                window.location.reload();
             }
         }
+    }
+
+    backToCategories() {
+        this.router.navigateByUrl('category');
     }
 }

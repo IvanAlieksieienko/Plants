@@ -9,7 +9,7 @@ import { SharedService } from './services/shared.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private _sharedService: SharedService) {}
+  constructor(public _sharedService: SharedService) {}
 
   
 }
