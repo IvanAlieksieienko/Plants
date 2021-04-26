@@ -14,6 +14,9 @@ import { SharedService } from './services/shared.service';
 import { SidebarModule } from 'ng-sidebar';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { OrderComponent } from './components/order/order.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { AboutComponent } from './components/about/about.component';
     SideBarComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    BasketComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +36,7 @@ import { AboutComponent } from './components/about/about.component';
     FormsModule,
     AppRoutingModule,
     FontAwesomeModule,
+    NgbModule,
     SidebarModule.forRoot()
   ],
   providers: [SharedService],

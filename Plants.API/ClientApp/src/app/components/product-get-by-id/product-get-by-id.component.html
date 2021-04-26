@@ -1,48 +1,44 @@
-<div class="back-to-category">
-    <div class="float-left">
-        <button class="btn-green" (click)="backToCategory()">
-            <fa-icon [icon]="icon" size="1x"></fa-icon>
-            <span>{{_category.name}}</span>
-        </button>
-    </div>
-    <div class="float-right">
-        <button class="btn-green" (click)="update()" *ngIf="_sharedService._isAuthenticated">ИЗМЕНИТЬ</button>
-        <button class="btn-green" (click)="delete()" *ngIf="_sharedService._isAuthenticated">УДАЛИТЬ</button>
-    </div>
-</div>
-<div class="product">
-    <div class="float-left">
-        <h2>{{_product.name}}</h2>
-        <div class="description">
-            <h5>{{_product.description}}</h5>
+<div class="container">
+    <div class="back-to-category">
+        <div class="float-left">
+            <button class="btn-green" (click)="backToCategory()">
+                <fa-icon [icon]="icon" size="1x"></fa-icon>
+                <span>{{_category.name}}</span>
+            </button>
         </div>
-        <div class="availability yes" *ngIf="_product.isAvailable">
-            <h4>Есть в наличии</h4>
-        </div>
-        <div class="availability no" *ngIf="!_product.isAvailable">
-            <h4>Нет в наличии</h4>
+        <div class="float-right">
+            <button class="btn-green" (click)="update()" *ngIf="_sharedService._isAuthenticated">ИЗМЕНИТЬ</button>
+            <button class="btn-green" (click)="delete()" *ngIf="_sharedService._isAuthenticated">УДАЛИТЬ</button>
         </div>
     </div>
-    <div class="float-right">
-        <ngb-carousel #carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" [interval]="0">
-            <ng-template ngbSlide>
-                <button class="btn-green" (click)="goToNext()">УЗНАТЬ ЦЕНУ</button>
-            </ng-template>
-            <ng-template ngbSlide>
-                <button class="btn-green" (click)="goToNext()">+380 95 949 83 34</button>
-            </ng-template>
-            <ng-template ngbSlide>
-                <button class="btn-green" (click)="goToNext()">+380 98 416 67 82</button>
-            </ng-template>
-            <ng-template ngbSlide>
-                <button class="btn-green" (click)="goToStart()">+380 68 550 43 75</button>
-            </ng-template>
-        </ngb-carousel>
-        <div class="image-default" (click)="showImage(_product.imagePath)" title="Нажмите, чтобы посмотреть полное изображение">
-            <img [src]="_product.imagePath">
+    <div class="product">
+        <div class="float-left">
+            <h2>{{_product.name}}</h2>
+            <div class="description">
+                <h5>{{_product.description}}</h5>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-5 yes shadow mr-3" *ngIf="_product.isAvailable">
+                    <h4>Есть в наличии</h4>
+                </div>
+                <div class="col-5 no shadow mr-3" *ngIf="!_product.isAvailable">
+                    <h4>Нет в наличии</h4>
+                </div>
+                <button class="col-3 btn-green" *ngIf="_product.isAvailable" (click)="addThisToBasket()">
+                    {{_product.price}} грн <fa-icon [icon]="buyIcon"></fa-icon>
+                </button>
+                <button class="col-3 btn-disabled" disabled *ngIf="!_product.isAvailable">
+                    {{_product.price}} грн <fa-icon [icon]="buyIcon"></fa-icon>
+                </button>
+            </div>
         </div>
-    </div>
+        <div class="float-right">
+            <div class="image-default" (click)="showImage(_product.imagePath)" title="Нажмите, чтобы посмотреть полное изображение">
+                <img [src]="_product.imagePath">
+            </div>
+        </div>
 
+    </div>
 </div>
 
 <div class="image-full-view" *ngIf="_isShowFullImage" (click)="closeImageView()" title="Нажмите, чтобы закрыть просмотр изображения">

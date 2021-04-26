@@ -1,28 +1,32 @@
-<div class="category-products">
-    <div class="div-for-create-button" *ngIf="_sharedService._isAuthenticated">
-        <button class="btn-green delete" (click)="deleteCategoriesMode()" *ngIf="_sharedService._isAuthenticated && !_deleteMode" title="Войти в режим удаления">УДАЛИТЬ</button>
-        <button class="btn-white delete" (click)="deleteCategoriesMode()" *ngIf="_sharedService._isAuthenticated && _deleteMode" title="Выйти из режима удаления">УДАЛИТЬ</button>
-        <button class="btn-green create" (click)="createCategory()" *ngIf="_sharedService._isAuthenticated && !_deleteMode" title="Создать категорию">СОЗДАТЬ</button>
-        <button class="btn-white create" (click)="deleteList()" *ngIf="_sharedService._isAuthenticated && _deleteMode" title="Удалить выбранное">УДАЛИТЬ ВЫБРАННОЕ</button>
+<div class="container">
+    <div class="category-products">
+        <div class="div-for-create-button" *ngIf="_sharedService._isAuthenticated">
+            <button class="btn-green delete" (click)="deleteCategoriesMode()" *ngIf="_sharedService._isAuthenticated && !_deleteMode" title="Войти в режим удаления">УДАЛИТЬ</button>
+            <button class="btn-white delete" (click)="deleteCategoriesMode()" *ngIf="_sharedService._isAuthenticated && _deleteMode" title="Выйти из режима удаления">УДАЛИТЬ</button>
+            <button class="btn-green create" (click)="createCategory()" *ngIf="_sharedService._isAuthenticated && !_deleteMode" title="Создать категорию">СОЗДАТЬ</button>
+            <button class="btn-white create" (click)="deleteList()" *ngIf="_sharedService._isAuthenticated && _deleteMode" title="Удалить выбранное">УДАЛИТЬ ВЫБРАННОЕ</button>
+        </div>
+        <div class="row justify-content-around">
+            <ng-container *ngFor="let category of _categories; index as i">
+                <div class="col-2 ml-2 p-0 mr-2 category" *ngIf="!_deleteMode" (click)="checkCategory(category)">
+                    <div class="image-default">
+                        <img [src]="category.imagePath">
+                    </div>
+                    <span>{{category.name}}</span>
+                </div>
+                <div class="col-3 category" *ngIf="_deleteMode && !_deleteList[i]" (click)="addCategoryToDeleteList(category)">
+                    <div class="image-default">
+                        <img [src]="category.imagePath">
+                    </div>
+                    <span>{{category.name}}</span>
+                </div>
+                <div class="col-3 category-delete" *ngIf="_deleteMode && _deleteList[i]" (click)="removeCategoryFromDeleteList(category)">
+                    <div class="image-default">
+                        <img [src]="category.imagePath">
+                    </div>
+                    <span>{{category.name}}</span>
+                </div>
+            </ng-container>
+        </div>
     </div>
-    <ng-container *ngFor="let category of _categories; index as i">
-        <div class="category" *ngIf="!_deleteMode" (click)="checkCategory(category)">
-            <div class="image-default">
-                <img [src]="category.imagePath">
-            </div>
-            <span>{{category.name}}</span>
-        </div>
-        <div class="category" *ngIf="_deleteMode && !_deleteList[i]" (click)="addCategoryToDeleteList(category)">
-            <div class="image-default">
-                <img [src]="category.imagePath">
-            </div>
-            <span>{{category.name}}</span>
-        </div>
-        <div class="category-delete" *ngIf="_deleteMode && _deleteList[i]" (click)="removeCategoryFromDeleteList(category)">
-            <div class="image-default">
-                <img [src]="category.imagePath">
-            </div>
-            <span>{{category.name}}</span>
-        </div>
-    </ng-container>
 </div>

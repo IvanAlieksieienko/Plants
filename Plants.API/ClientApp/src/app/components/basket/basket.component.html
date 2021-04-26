@@ -1,0 +1,31 @@
+﻿
+<fa-icon class="closeBtn faIcon-hover-green" [icon]="closeIcon" (click)="closeModal()"></fa-icon>
+
+<div class="container col-12">
+    <div class="row justify-content-center list-products mt-5">
+        <ng-container *ngFor="let basketItem of _basketData; index as i">
+            <div class="col-12 row justify-content-center">
+                <h6 class="col-5">{{basketItem.product.name}}</h6>
+                <h6 class="col-2">{{basketItem.product.price}} грн</h6>
+                <fa-icon class="col-1 faIcon-hover-green" [icon]="minusIcon" (click)="decrease(basketItem)"></fa-icon>
+                <h6 class="col-1">{{basketItem.count}}</h6>
+                <fa-icon class="col-1 faIcon-hover-green" [icon]="plusIcon" (click)="increase(basketItem)"></fa-icon>
+                <h6 ckass="col-2">{{basketItem.product.price * basketItem.count}} грн</h6>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
+
+<div class="container stick-bottom">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h6 class="text-center" style="line-height: 29px;">{{ getTotalSum() }} грн</h6>
+        </div>
+        <div class="col-6">
+            <div class="row justify-content-center">
+                <button class="btn-green" (click)="goToOrderPage()">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+</div>

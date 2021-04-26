@@ -45,10 +45,12 @@ namespace Plants.API
             services.AddScoped<ICategoryRepository<Category>, CategoryRepository>(provider => new CategoryRepository(connectionString));
             services.AddScoped<IProductRepository<Product>, ProductRepository>(provider => new ProductRepository(connectionString));
             services.AddScoped<IAdminRepository<Admin>, AdminRepository>(provider => new AdminRepository(connectionString));
+            services.AddScoped<IOrderRepository<Order>, OrderRepository>(provider => new OrderRepository(connectionString));
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>

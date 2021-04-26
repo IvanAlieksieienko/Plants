@@ -4,21 +4,23 @@ import { HomeComponent } from "./components/home/home.component";
 import { SharedService } from "./services/shared.service";
 import { AboutComponent } from "./components/about/about.component";
 import { ContactComponent } from "./components/contact/contact.component";
+import { OrderComponent } from "./components/order/order.component";
+import { CanDeactivateGuard } from "./services/can-deactive.guard";
 
 const routes: Routes = [
-    {path: '', loadChildren: "./modules/category/category.module#CategoryModule"},
-    {path: 'login', loadChildren: "./modules/login/login.module#LoginModule"},
-    {path: 'category', loadChildren: "./modules/category/category.module#CategoryModule"},
-    {path: 'product', loadChildren: "./modules/product/product.module#ProductModule"},
-    {path: 'about', component: AboutComponent},
-    {path: 'contact', component: ContactComponent},
-    {path: '**', loadChildren: "./modules/category/category.module#CategoryModule"}
-    
+  { path: '', loadChildren: "./modules/category/category.module#CategoryModule" },
+  { path: 'login', loadChildren: "./modules/login/login.module#LoginModule" },
+  { path: 'category', loadChildren: "./modules/category/category.module#CategoryModule" },
+  { path: 'product', loadChildren: "./modules/product/product.module#ProductModule" },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'orderPage', component: OrderComponent, canDeactivate: [CanDeactivateGuard] },
+  { path: '**', loadChildren: "./modules/category/category.module#CategoryModule" },
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
-    providers: [SharedService]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [SharedService]
 })
 export class AppRoutingModule { }

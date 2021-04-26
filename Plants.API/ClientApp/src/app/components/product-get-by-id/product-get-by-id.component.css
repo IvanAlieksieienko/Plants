@@ -88,11 +88,9 @@
 }
 
 .product .float-right .btn-green {
-    padding: 10px 20px 10px 20px;
     font-weight: 500;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 300px;
+    width: 30px;
+    height: 30px;
 }
 
 .product .float-right .btn-green:hover {

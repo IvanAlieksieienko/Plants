@@ -15,3 +15,13 @@
         <button class="btn-white" (click)="logout()" *ngIf="_sharedService._isAuthenticated">ВЫЙТИ</button>
     </div>
 </div>
+
+<button class="btn-green basket" (click)="openBasketModal()" *ngIf="_sharedService._isBasketAvailable">
+    <fa-icon [icon]="buyIcon"></fa-icon>
+</button>
+
+<div class="container container-to-view col-12" *ngIf="_sharedService._isBasketModalOpened">
+    <div class="row justify-content-center">
+        <basket class="col-8 default-modal"></basket>
+    </div>
+</div>

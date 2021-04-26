@@ -1,32 +1,52 @@
-<div class="main-area">
-    <div class="inputs">
-        <input class="name" type="text" [(ngModel)]="model.name" placeholder="имя продукта...">
-        <button class="btn-white" *ngIf="!_isAvailable" (click)="turnAvailabless()">Нет в наличии</button>
-        <button class="btn-green" *ngIf="_isAvailable" (click)="turnAvailabless()">Есть в наличии</button>
-        <textarea class="description" [(ngModel)]="model.description" placeholder="описание..."></textarea>
-
-    </div>
-    <div class="inputs-image">
-        <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{choosedCategory.name}}</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <ng-container *ngFor="let category of categories; index as i">
-                    <button ngbDropdownItem (click)="chooseCategory(category)">{{category.name}}</button>
-                </ng-container>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 main-area">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="row justify-content-center mt-5 input-height-sm">
+                        <input class="col-10 shadow-lg" type="text" [(ngModel)]="model.name" placeholder="имя продукта...">
+                    </div>
+                    <div class="row justify-content-around mt-5 input-height-sm">
+                        <button class="btn-white col-4" *ngIf="!_isAvailable" (click)="turnAvailabless()">Нет в наличии</button>
+                        <button class="btn-green col-4" *ngIf="_isAvailable" (click)="turnAvailabless()">Есть в наличии</button>
+                        <input class="col-4 shadow-lg" type="number" placeholder="цена..." [(ngModel)]="model.price" />
+                    </div>
+                    <div class="row justify-content-center mt-5 input-height-md">
+                        <textarea class="col-10 description" [(ngModel)]="model.description" placeholder="описание..."></textarea>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <button class="btn-white shadow-lg input-height-sm col-6" (click)="add()">ДОБАВИТЬ</button>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row justify-content-center mt-5">
+                        <div ngbDropdown class="col-12 d-inline-block input-height-sm">
+                            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{choosedCategory.name}}</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <ng-container *ngFor="let category of categories; index as i">
+                                    <button ngbDropdownItem (click)="chooseCategory(category)">{{category.name}}</button>
+                                </ng-container>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="form-group">
+                            <label class="label">
+                                <fa-icon class="material-icons" [icon]="icon" size="2x"></fa-icon>
+                                <span class="title">ДОБАВИТЬ ФАЙЛ</span>
+                                <input type="file" (change)="onSelectFile($event)">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-3 pb-3">
+                        <div class="image-default" (click)="showImage(model.imagePath)" title="Нажмите, чтобы посмотреть полное изображение">
+                            <img [src]="model.imagePath">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
         </div>
-        <div class="form-group">
-            <label class="label">
-				<fa-icon class="material-icons" [icon]="icon" size="2x"></fa-icon>
-				<span class="title">ДОБАВИТЬ ФАЙЛ</span>
-				<input type="file" (change)="onSelectFile($event)">
-			</label>
-        </div>
-        <div class="image-default" (click)="showImage(model.imagePath)" title="Нажмите, чтобы посмотреть полное изображение">
-            <img [src]="model.imagePath">
-        </div>
-        <button class="btn-white" (click)="add()">ДОБАВИТЬ</button>
     </div>
 </div>
 

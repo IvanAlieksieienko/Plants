@@ -1,0 +1,54 @@
+﻿<div class="container col-12">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="row justify-content-center mt-4">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="firstName" placeholder="имя" />
+            </div>
+            <div class="row justify-content-center mt-4">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="secondName" placeholder="фамилия" />
+            </div>
+            <div class="row justify-content-center mt-4">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="patronymic" placeholder="отчество" />
+            </div>
+            <div class="row justify-content-center mt-4">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="phoneNumber" placeholder="номер телефона" />
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div ngbDropdown class="col-8 shadow-lg info-input d-inline-block p-0">
+                    <button class="btn-delivery" id="dropdownBasic1" ngbDropdownToggle>{{deliveryType}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="setDeliveryType('Самовывоз')">Самовывоз</button>
+                        <button ngbDropdownItem (click)="setDeliveryType('Доставка Новой Почтой')">Доставка Новой Почтой</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4" *ngIf="isDeliveryInfoAvailable">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="city" placeholder="город" />
+            </div>
+            <div class="row justify-content-center mt-4" *ngIf="isDeliveryInfoAvailable">
+                <input class="col-8 shadow-lg info-input" type="text" [(ngModel)]="street" placeholder="отделение" />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 info-basket shadow-lg mr-4">
+                    <ng-container *ngFor="let basketItem of _basketData; index as i">
+                        <div class="col-12 mt-3 mb-3 row justify-content-center">
+                            <h6 class="col-5">{{basketItem.product.name}}</h6>
+                            <h6 class="col-2">{{basketItem.product.price}} грн</h6>
+                            <fa-icon class="col-1 faIcon-hover-green" [icon]="minusIcon" (click)="decrease(basketItem)"></fa-icon>
+                            <h6 class="col-1">{{basketItem.count}}</h6>
+                            <fa-icon class="col-1 faIcon-hover-green" [icon]="plusIcon" (click)="increase(basketItem)"></fa-icon>
+                            <h6 ckass="col-2">{{basketItem.product.price * basketItem.count}} грн</h6>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <button class="col-12 make-order-btn shadow-lg mr-4" (click)="makeOrder()">
+                    Отправить заказ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

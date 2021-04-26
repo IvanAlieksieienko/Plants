@@ -34,6 +34,15 @@ a:focus {
     color: white;
 }
 
+.btn-disabled {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: none;
+  background: #c8dbc1;
+  border-radius: 3px;
+  text-align: center;
+  color: white;
+}
+
 .btn-green:hover {
     background: white;
     color: black;
@@ -99,4 +108,15 @@ ngb-carousel {
     transform: rotateX(0deg);
     visibility: visible;
     opacity: 1;
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.square-width-height-40 {
+    width: 40px;
+    height: 40px;
+    max-height: 40px;
+    max-width: 40px;
 }

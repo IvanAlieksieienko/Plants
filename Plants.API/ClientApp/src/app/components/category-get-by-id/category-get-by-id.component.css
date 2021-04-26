@@ -69,7 +69,8 @@
     display: inline-block;
     margin-left: 50px;
     width: 200px;
-    height: 320px;
+    min-height: 320px;
+    margin-bottom: 5px;
     background: white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     cursor: pointer;
@@ -90,16 +91,14 @@
 .category-products .product span {
     display: table-cell;
     width: 200px;
-    height: 55px;
+    min-height: 55px;
     font-size: 1.1em;
-    line-height: normal;
     text-align: center;
     vertical-align: middle;
 }
 
 .category-products .btn-green {
     padding: 6px 12px;
-    font-size: 1.8em;
     text-decoration: none;
     display: inline-block;
     margin-left: 5%;
