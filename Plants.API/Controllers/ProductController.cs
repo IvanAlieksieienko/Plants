@@ -12,17 +12,33 @@ using Plants.Core.IServices;
 
 namespace Plants.API.Controllers
 {
+    /// <summary>
+	/// Контроллер для реализации бизнес логики продуктов.
+	/// Принимает запрос, выполняет действия и отдает ответ,
+	/// если он есть.
+	/// </summary>
     [Route("product")]
     [ApiController]
     public class ProductController : Controller
     {
+        /// <summary>
+		/// Сервис продуктов, с которым взаимодействует контроллер.
+		/// </summary>
         private IProductService _productService;
 
+        /// <summary>
+		/// Конструктор
+		/// </summary>
+		/// <param name="productService">Интерфейс сервиса продуктов, внедряемый благодаря встроенному Dependency Injection</param>
         public ProductController(IProductService productService)
         {
             _productService = productService;
         }
 
+        /// <summary>
+		/// Метод получения всех продуктов с базы данных
+		/// </summary>
+		/// <returns>Коллекция продуктов</returns>
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
@@ -30,6 +46,11 @@ namespace Plants.API.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+		/// Получает конкретный продукт по его ИД
+		/// </summary>
+		/// <param name="ID">Идентификатор (типа Guid)</param>
+		/// <returns>Обьект продукта</returns>
         [HttpGet("{ID:guid}")]
         public async Task<IActionResult> GetByID(Guid ID)
         {
@@ -37,6 +58,12 @@ namespace Plants.API.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+		/// Получение коллекции продуктов, которые относятся
+		/// к конкретной категории
+		/// </summary>
+		/// <param name="ID">ИД категории</param>
+		/// <returns>Коллекцию продуктов</returns>
         [HttpGet("category/{ID:guid}")]
         public async Task<IActionResult> GetByCategoryID(Guid ID)
         {
@@ -44,6 +71,12 @@ namespace Plants.API.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+		/// <para>Метод для администратора</para>
+		/// Добавление продукта без ИД в бд и возвращение его обратно
+		/// </summary>
+		/// <param name="product">Новый продукт</param>
+		/// <returns>Продукт с новым ИД</returns>
         [Authorize]
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody]Product product)
@@ -52,6 +85,12 @@ namespace Plants.API.Controllers
             return Ok(productReturned);
         }
 
+        /// <summary>
+		/// <para>Метод для администратора</para>
+		/// Изменение продукта и возвращение его обновленного
+		/// </summary>
+		/// <param name="product">Продукт для модификации в бд</param>
+		/// <returns>Обновленный продукт</returns>
         [Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromBody]Product product)
@@ -60,6 +99,12 @@ namespace Plants.API.Controllers
             return Ok(productReturned);
         }
 
+        /// <summary>
+		/// <para>Метод для администратора</para>
+		/// Удаление продукта из БД
+		/// </summary>
+		/// <param name="ID">ИД продукта, который нужно удалить</param>
+		/// <returns>Ничего</returns>
         [Authorize]
         [HttpDelete("{ID:guid}")]
         public async Task<IActionResult> Delete(Guid ID)
@@ -73,6 +118,12 @@ namespace Plants.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+		/// <para>Метод для администратора</para>
+		/// Загрузка изображения. Принимает изображение в виде
+		/// файла и перемещает его в папку /Resources/Images/Product
+		/// </summary>
+		/// <returns>Путь к изображению</returns>
         [Authorize]
         [HttpPost("upload")]
         public async Task<IActionResult> UploadImage()

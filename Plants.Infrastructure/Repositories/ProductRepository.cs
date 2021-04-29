@@ -11,15 +11,31 @@ using System.Threading.Tasks;
 
 namespace Plants.Infrastructure.Repositories
 {
+    /// <summary>
+	/// Репозиторий продуктов, реализующий доступ к бд - чтение,
+	/// запись, модификацию и удаление
+	/// </summary>
     public class ProductRepository : IProductRepository<Product>
     {
+        /// <summary>
+		/// Строка соединения БД для подключения
+		/// </summary>
         private string _connectionString;
 
+        /// <summary>
+		/// Конструктор
+		/// </summary>
+		/// <param name="connectionString">Строка соеденения, передается в параметры в методе Startup из настроек</param>
         public ProductRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
+        /// <summary>
+		/// Добавление продукта в БД
+		/// </summary>
+		/// <param name="product">Новый продукт</param>
+		/// <returns>Продукт с обновленным ИД</returns>
         public async Task<Product> Add(Product product)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -39,6 +55,10 @@ namespace Plants.Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+		/// Получение всех продуктов из БД
+		/// </summary>
+		/// <returns>Коллекция продуктов</returns>
         public async Task<ICollection<Product>> GetAll()
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -48,6 +68,11 @@ namespace Plants.Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+		/// Получение продукта по его ИД
+		/// </summary>
+		/// <param name="ID">Идентификатор (типа Guid)</param>
+		/// <returns>Обьект продукта</returns>
         public async Task<Product> GetByID(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -57,6 +82,12 @@ namespace Plants.Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+		/// Получение коллекции продуктов, которые относятся
+		/// к конкретной категории
+		/// </summary>
+		/// <param name="ID">ИД категории</param>
+		/// <returns>Коллекцию продуктов</returns>
         public async Task<ICollection<Product>> GetByCategoryID(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -66,6 +97,11 @@ namespace Plants.Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+		/// Изменение продукта и возвращение его обновленного
+		/// </summary>
+		/// <param name="product">Продукт для модификации в бд</param>
+		/// <returns>Обновленный продукт</returns>
         public async Task<Product> Update(Product product)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -92,6 +128,11 @@ namespace Plants.Infrastructure.Repositories
             }
         }
 
+        /// <summary>
+		/// Удаление продукта из БД
+		/// </summary>
+		/// <param name="ID">ИД продукта, который нужно удалить</param>
+		/// <returns>Ничего</returns>
         public async Task Delete(Guid? ID)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
