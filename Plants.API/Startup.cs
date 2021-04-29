@@ -10,7 +10,7 @@ using Plants.Core.Entities;
 using Plants.Core.IRepositories;
 using Plants.Core.IServices;
 using Plants.Core.Services;
-using Plants.Infrastructure.MySQLRepositories;
+using Plants.Infrastructure.Repositories;
 using Newtonsoft.Json;
 using Newtonsoft;
 using Microsoft.AspNetCore.Http.Features;
@@ -38,7 +38,7 @@ namespace Plants.API
                 // ...
             });
             /* Development mode */
-            var connectionString = Configuration.GetConnectionString("MySQLLocalDB");
+            var connectionString = Configuration.GetConnectionString("LocalDB");
             /* Production mode */
             //var connectionString = Configuration.GetConnectionString("RemoteDB");
 

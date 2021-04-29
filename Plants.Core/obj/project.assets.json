@@ -8,24 +8,30 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/ivan/.nuget/packages/": {}
+    "C:\\Users\\khmel\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ivan/Documents/Projects/Plants/Plants.Core/Plants.Core.csproj",
+      "projectUniqueName": "C:\\Users\\khmel\\Desktop\\Plants\\Plants\\Plants.Core\\Plants.Core.csproj",
       "projectName": "Plants.Core",
-      "projectPath": "/Users/ivan/Documents/Projects/Plants/Plants.Core/Plants.Core.csproj",
-      "packagesPath": "/Users/ivan/.nuget/packages/",
-      "outputPath": "/Users/ivan/Documents/Projects/Plants/Plants.Core/obj/",
+      "projectPath": "C:\\Users\\khmel\\Desktop\\Plants\\Plants\\Plants.Core\\Plants.Core.csproj",
+      "packagesPath": "C:\\Users\\khmel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\khmel\\Desktop\\Plants\\Plants\\Plants.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/ivan/.config/NuGet/NuGet.Config"
+        "C:\\Users\\khmel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -58,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
